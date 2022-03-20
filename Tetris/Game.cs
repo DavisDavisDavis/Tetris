@@ -59,10 +59,6 @@ class Game
     {
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
-       
-        //int[,] gridFilled = new int[gridWidth, gridHeight];
-        //yeah something like this! We can make this work!!! uwuwuwuuw
-        //var gridFilledX = new List<int>();
         for (int r = 0; r < grid.GetLength(1); r++)
         {
             for (int c = 0; c < grid.GetLength(0); c++)
@@ -82,7 +78,7 @@ class Game
             Console.WriteLine();
         }
         y++;
-        if (y > 14 || grid[x, y] == 1)
+        if (y > 14 || grid[x - 1, y] == 1)
         {
             grid[x, y] = 1;
             y = 0;
