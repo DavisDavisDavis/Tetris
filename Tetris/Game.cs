@@ -58,8 +58,8 @@ class Game
     void Tick()
     {
         Console.Clear();
-        Console.WriteLine("Tick");
-
+        Console.WriteLine($"X: {x} Y: {y}");
+       
         //int[,] gridFilled = new int[gridWidth, gridHeight];
         //yeah something like this! We can make this work!!! uwuwuwuuw
         //var gridFilledX = new List<int>();
@@ -77,17 +77,16 @@ class Game
                     Console.Write("X");
                     continue;
                 }
-                if (y > 14 || grid[c, r] == 1 && c == x && r == y)
-                {
-                    grid[x, y] = 1;
-                    y = 0;
-                    continue;
-                }
                 Console.Write("  ");
             }
             Console.WriteLine();
         }
         y++;
+        if (y > 14 || grid[x, y] == 1)
+        {
+            grid[x, y] = 1;
+            y = 0;
+        }
         ScheduleNextTick();
     }
 
