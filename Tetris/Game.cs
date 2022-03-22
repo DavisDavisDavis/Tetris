@@ -11,11 +11,11 @@ class Game
     public bool Paused { get; private set; }
     public bool GameOver { get; private set; }
 
-    public int x = 5;
+    public int x = 6;
     public int y = 0;
     public int gridWidth = 10;
     public int gridHeight = 16;
-    public int[,] grid = new int[10, 16];
+    public int[,] grid = new int[11, 16];
 
     public void Start()
     {
@@ -65,24 +65,26 @@ class Game
             {
                 if (c == x && r == y)
                 {
-                    Console.Write("X");
+                    Console.Write("🐱");
                     continue;
                 }
                 if (grid[c, r] == 1)
                 {
-                    Console.Write("X");
+                    Console.Write("🐱");
                     continue;
                 }
-                Console.Write("  ");
+                Console.Write("🌀");
             }
             Console.WriteLine();
         }
         y++;
-        if (y > 14 || grid[x - 1, y] == 1)
+        if (y > 14 || grid[x , y + 1] == 1)
         {
             grid[x, y] = 1;
+            //grid[x+1, y] = 1;
             y = 0;
         }
+
         ScheduleNextTick();
     }
 
