@@ -57,6 +57,14 @@ class Game
 
     void Tick()
     {
+        var block = new byte[,]
+        {
+            { 0, 0, 0 },
+            { 1, 1, 1 },
+            { 0, 1, 0 },
+        };
+
+
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
         for (int r = 0; r < grid.GetLength(1); r++)
@@ -66,12 +74,20 @@ class Game
             {
                 if (c == x && r == y)
                 {
-                    Console.Write("🐱");
+                    for (var i = 0; i < 2; i++)
+                    {
+                        for (var j = 0; j < 2; j++)
+                        {
+                            Console.Write(block[i, j]);
+                        }
+
+                        Console.WriteLine();
+                    }
                     continue;
                 }
                 if (grid[c, r] == 1)
                 {
-                    Console.Write("🐱");
+                    Console.Write("X");
                     fullRow++;
                     if (fullRow >= 5)
                     {
@@ -83,7 +99,7 @@ class Game
                     }
                     continue;
                 }
-                Console.Write("🌀");
+                Console.Write(" ");
             }
             Console.WriteLine();
         }
@@ -91,7 +107,6 @@ class Game
         if (y > 14 || grid[x , y + 1] == 1)
         {
             grid[x, y] = 1;
-            //grid[x + 1, y] = 1;
             y = 0;
         }
 
