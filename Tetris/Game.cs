@@ -73,16 +73,15 @@ class Game
                 {
                     Console.Write("🐱");
                     fullRow++;
-                    //Console.WriteLine(fullRow);
-                    continue;
-                }
-                if (fullRow >= 4)
-                {
-
-                    for (int i = 0; i < 4; i++)
+                    if (fullRow >= 5)
                     {
-                        grid[i, r] = 0;
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            grid[i, r] = 0;
+                        }
                     }
+                    continue;
                 }
                 Console.Write("🌀");
             }
@@ -92,6 +91,7 @@ class Game
         if (y > 14 || grid[x , y + 1] == 1)
         {
             grid[x, y] = 1;
+            //grid[x + 1, y] = 1;
             y = 0;
         }
 

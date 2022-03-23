@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/uwu/Desktop/c#/Tetris/Tetris/Tetris.csproj",
+      "projectUniqueName": "/Users/uwu/Developer/C#/Tetris/Tetris/Tetris.csproj",
       "projectName": "Tetris",
-      "projectPath": "/Users/uwu/Desktop/c#/Tetris/Tetris/Tetris.csproj",
+      "projectPath": "/Users/uwu/Developer/C#/Tetris/Tetris/Tetris.csproj",
       "packagesPath": "/Users/uwu/.nuget/packages/",
-      "outputPath": "/Users/uwu/Desktop/c#/Tetris/Tetris/obj/",
+      "outputPath": "/Users/uwu/Developer/C#/Tetris/Tetris/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/uwu/.config/NuGet/NuGet.Config"
