@@ -3,19 +3,20 @@
 // as needed. You should try to write your game in a modular way, avoid
 // making one huge Game class.
 //
+using Tetris;
 
 class Game
 {
     ScheduleTimer? _timer;
+    
 
     public bool Paused { get; private set; }
     public bool GameOver { get; private set; }
 
-    public int x = 3;
-    public int y = 0;
-    public int gridWidth = 5;
-    public int gridHeight = 16;
-    public int[,] grid = new int[5, 16];
+    public int x = 0;
+    public int y = 0;  
+    public int[,] grid = new int[3, 16];
+
 
     public void Start()
     {
@@ -49,7 +50,7 @@ class Game
         {
             x--;
         }
-        if (ConsoleKey.RightArrow == key && x < gridWidth - 1)
+        if (ConsoleKey.RightArrow == key && x < grid.GetLength(0) - 1)
         {
             x++;
         }
@@ -64,9 +65,9 @@ class Game
             { 0, 1, 0 },
         };
 
-
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
+        Console.WriteLine();
         for (int r = 0; r < grid.GetLength(1); r++)
         {
             var fullRow = 0;
@@ -74,29 +75,17 @@ class Game
             {
                 if (c == x && r == y)
                 {
-                    for (var i = 0; i < 2; i++)
-                    {
-                        for (var j = 0; j < 2; j++)
-                        {
-                            Console.Write(block[i, j]);
-                        }
 
-                        Console.WriteLine();
-                    }
+                    Console.WriteLine("X");
+
                     continue;
                 }
                 if (grid[c, r] == 1)
                 {
                     Console.Write("X");
                     fullRow++;
-                    if (fullRow >= 5)
-                    {
+                    Matrix.clearRow(fullRow, grid, r);
 
-                        for (int i = 0; i < 5; i++)
-                        {
-                            grid[i, r] = 0;
-                        }
-                    }
                     continue;
                 }
                 Console.Write(" ");
