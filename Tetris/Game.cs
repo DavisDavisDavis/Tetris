@@ -15,7 +15,7 @@ class Game
 
     public int x = 0;
     public int y = 0;  
-    public int[,] grid = new int[3, 16];
+    public int[,] grid = new int[3, 10];
 
 
     public void Start()
@@ -65,35 +65,41 @@ class Game
             { 0, 1, 0 },
         };
 
+        var downCount = 0;
+
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
-        Console.WriteLine();
         for (int r = 0; r < grid.GetLength(1); r++)
         {
+            
             var fullRow = 0;
             for (int c = 0; c < grid.GetLength(0); c++)
             {
                 if (c == x && r == y)
                 {
-
-                    Console.WriteLine("X");
-
+                    Console.Write("🐱");
                     continue;
                 }
                 if (grid[c, r] == 1)
                 {
-                    Console.Write("X");
+                    Console.Write("🐱");
                     fullRow++;
-                    Matrix.clearRow(fullRow, grid, r);
-
+                    downCount = 0;
+                    downCount = Matrix.ClearRow(fullRow, grid, r, downCount);
+                  
+                    if (downCount > 0)
+                    {
+                        Matrix.MoveRow(fullRow, grid, r, downCount);
+                    }
                     continue;
                 }
-                Console.Write(" ");
+                Console.Write("🌀");
             }
+            
             Console.WriteLine();
         }
         y++;
-        if (y > 14 || grid[x , y + 1] == 1)
+        if (y >= grid.GetLength(1) - 3 || grid[x , y + 1] == 1)
         {
             grid[x, y] = 1;
             y = 0;

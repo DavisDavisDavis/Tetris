@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wjmhlAD+V78OmMCovTTcr9pW27zESRiFGxqWZjghZ7nkxDtpbNmEyEYUtGSvLLFzFZJZ2E8V2e7+5GVqrwWuQQ==",
+  "dgSpecHash": "USOjMEjZpmYYVEMmHPRRfEHLlcvb8cSS8Qw4aeIihKxWuujeBJGBTJfG+VaGgNjC9IoGyZqFRKweHIgHQTeFFw==",
   "success": true,
-  "projectFilePath": "D:\\Code\\WU21\\C#\\Tetris\\Tetris\\Tetris.csproj",
+  "projectFilePath": "/Users/uwu/Developer/C#/Tetris/Tetris/Tetris.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
