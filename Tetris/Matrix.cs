@@ -22,11 +22,12 @@ namespace Tetris
 
             if (fullRow)
             {
+                downCount++;
                 for (int c = 0; c < grid.GetLength(0); c++)
                 {
                     grid[c, r] = 0;
                 }
-                return downCount++;
+                return downCount;
             }
             return 0;
         }
@@ -37,6 +38,7 @@ namespace Tetris
 
             for (int c = 0; c < grid.GetLength(0); c++)
             {
+                Console.WriteLine(downCount);
                 grid[c, r + downCount] = grid[c, r];
                 grid[c, r] = 0;
             }
@@ -46,10 +48,8 @@ namespace Tetris
         public static void ClearBoard(int[,] grid)
         {
             downCount = 0;
-            for (int r = grid.GetLength(1) - 1; r < 0; r--)
+            for (int r = grid.GetLength(1) - 1; r > 0; r--)
             {
-                ClearRow(grid, r);
-
                 if (ClearRow(grid, r) > 0)
                 {
                     MoveRow(grid, r);
