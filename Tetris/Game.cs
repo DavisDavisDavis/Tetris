@@ -65,35 +65,26 @@ class Game
             { 0, 1, 0 },
         };
 
-        var downCount = 0;
-
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
         for (int r = 0; r < grid.GetLength(1); r++)
         {
-            
-            var fullRow = 0;
             for (int c = 0; c < grid.GetLength(0); c++)
             {
                 if (c == x && r == y)
                 {
-                    Console.Write("🐱");
+                    //Console.Write("🐱");
+                    Console.Write("X");
                     continue;
                 }
+                Matrix.ClearBoard(grid);
                 if (grid[c, r] == 1)
                 {
-                    Console.Write("🐱");
-                    fullRow++;
-                    downCount = 0;
-                    downCount = Matrix.ClearRow(fullRow, grid, r, downCount);
-                  
-                    if (downCount > 0)
-                    {
-                        Matrix.MoveRow(fullRow, grid, r, downCount);
-                    }
+                    Console.Write("X");
                     continue;
-                }
-                Console.Write("🌀");
+                } 
+                //Console.Write("🌀");
+                Console.Write(" ");
             }
             
             Console.WriteLine();
