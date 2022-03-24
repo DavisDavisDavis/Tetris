@@ -80,6 +80,7 @@ class Game
                 Matrix.ClearBoard(grid);
                 if (grid[c, r] == 1)
                 {
+                    //Console.Write("🐱");
                     Console.Write("X");
                     continue;
                 } 

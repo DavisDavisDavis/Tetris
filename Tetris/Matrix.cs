@@ -7,29 +7,27 @@ namespace Tetris
      
         private static int downCount { get; set; }
         private static bool fullRow { get; set; }
-        public static int ClearRow(int[,] grid, int r)
+
+        public static bool IsRowClear(int[,] grid, int r)
         {
             for (int c = 0; c < grid.GetLength(0); c++)
             {
                 if (grid[c, r] == 0)
                 {
-                    fullRow = false;
-                    break;
+                    return false;
                 }
-
-                fullRow = true;
             }
+            return true;
+        }
 
-            if (fullRow)
+        public static int ClearRow(int[,] grid, int r)
+        {
+            for (int c = 0; c < grid.GetLength(0); c++)
             {
-                downCount++;
-                for (int c = 0; c < grid.GetLength(0); c++)
-                {
-                    grid[c, r] = 0;
-                }
-                return downCount;
+                grid[c, r] = 0;
             }
-            return 0;
+            downCount++;
+            return downCount;
         }
 
         public static void MoveRow(int[,] grid, int r)
@@ -38,7 +36,7 @@ namespace Tetris
 
             for (int c = 0; c < grid.GetLength(0); c++)
             {
-                Console.WriteLine(downCount);
+                Console.WriteLine(grid[c, r]);
                 grid[c, r + downCount] = grid[c, r];
                 grid[c, r] = 0;
             }
@@ -48,9 +46,14 @@ namespace Tetris
         public static void ClearBoard(int[,] grid)
         {
             downCount = 0;
-            for (int r = grid.GetLength(1) - 1; r > 0; r--)
+            for (int r = grid.GetLength(1) - 1; r >= 0; r--)
             {
-                if (ClearRow(grid, r) > 0)
+                if (IsRowClear(grid, r))
+                {
+                    ClearRow(grid, r);
+                    downCount++;
+                }
+                else if (downCount > 0)
                 {
                     MoveRow(grid, r);
                 }
