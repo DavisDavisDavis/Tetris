@@ -36,7 +36,6 @@ namespace Tetris
 
             for (int c = 0; c < grid.GetLength(0); c++)
             {
-                Console.WriteLine(grid[c, r]);
                 grid[c, r + downCount] = grid[c, r];
                 grid[c, r] = 0;
             }
@@ -57,9 +56,7 @@ namespace Tetris
                 {
                     MoveRow(grid, r);
                 }
-
             }
         }
-
     }
 }

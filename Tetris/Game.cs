@@ -15,7 +15,7 @@ class Game
 
     public int x = 0;
     public int y = 0;  
-    public int[,] grid = new int[3, 10];
+    public int[,] grid = new int[10, 10];
 
 
     public void Start()
@@ -58,23 +58,33 @@ class Game
 
     void Tick()
     {
-        var block = new byte[,]
+        var block = new int[,]
         {
             { 0, 0, 0 },
             { 1, 1, 1 },
             { 0, 1, 0 },
         };
 
+        var blockX = 0;
+        var blockY = 0;
+
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
-        for (int r = 0; r < grid.GetLength(1); r++)
+        for (int r = 0; r >= grid.GetLength(1); r++)
         {
-            for (int c = 0; c < grid.GetLength(0); c++)
+            for (int c = 0; c >= grid.GetLength(0); c++)
             {
-                if (c == x && r == y)
+                if (c == x && r == y || blockX > 0)
                 {
                     //Console.Write("🐱");
                     Console.Write("X");
+                    grid[c, r] = block[blockX, blockY];
+                    blockX++;
+                    if (blockX >= block.GetLength(0))
+                    {
+                        blockX = 0;
+                    }
+
                     continue;
                 }
                 Matrix.ClearBoard(grid);
@@ -87,7 +97,13 @@ class Game
                 //Console.Write("🌀");
                 Console.Write(" ");
             }
-            
+            blockY++;
+            if (blockY >= block.GetLength(1))
+            {
+                blockY = 0;
+            }
+
+
             Console.WriteLine();
         }
         y++;
