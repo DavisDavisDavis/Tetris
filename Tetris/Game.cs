@@ -60,13 +60,15 @@ class Game
     {
         var block = new int[,]
         {
-            { 0, 0, 0 },
-            { 1, 1, 1 },
+            { 1, 0, 0 },
             { 0, 1, 0 },
+            { 0, 0, 1 },
         };
 
         var blockX = 0;
         var blockY = 0;
+
+        int[,] blockGrid = new int[10, 10];
 
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
@@ -74,20 +76,31 @@ class Game
         {
             for (int c = 0; c <= grid.GetLength(0) - 1; c++)
             {
+
+                if (blockGrid[c, r] == 1)
+                {
+                    Console.Write("X");
+                }
+
                 if (c == x && r == y || blockX > 0)
                 {
                     //Console.Write("🐱");
-                    Console.Write("X");
-                    grid[c, r] = block[blockX, blockY];
+                    //Console.Write("X");
+                    blockGrid[c, r] = block[blockX, blockY];
                     blockX++;
                     if (blockX >= block.GetLength(0))
                     {
                         blockX = 0;
                     }
 
+                    
+
                     continue;
                 }
                 Matrix.ClearBoard(grid);
+
+
+
                 if (grid[c, r] == 1)
                 {
                     //Console.Write("🐱");
