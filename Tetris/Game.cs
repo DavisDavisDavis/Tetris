@@ -70,9 +70,9 @@ class Game
 
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
-        for (int r = 0; r >= grid.GetLength(1); r++)
+        for (int r = 0; r <= grid.GetLength(1) - 1; r++)
         {
-            for (int c = 0; c >= grid.GetLength(0); c++)
+            for (int c = 0; c <= grid.GetLength(0) - 1; c++)
             {
                 if (c == x && r == y || blockX > 0)
                 {
