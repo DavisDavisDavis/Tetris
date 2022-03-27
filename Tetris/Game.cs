@@ -77,7 +77,7 @@ class Game
         {
             for (int c = 0; c < grid.GetLength(1); c++)
             {
-                if (c == x && r == y || blockX > 0)
+                if (c == x && r == y || blockY > 0)
                 {
                     blockGrid[c, r] = block[blockY, blockX];
                     var what_is_this_value = block[blockX, blockY];
