@@ -60,9 +60,9 @@ class Game
     {
         var block = new int[,]
         {
-            { 1, 0, 0 },
+            { 1, 1, 1 },
             { 0, 1, 0 },
-            { 0, 0, 1 },
+            { 1, 1, 1 },
         };
 
         var blockX = 0;
@@ -72,53 +72,56 @@ class Game
 
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
-        for (int r = 0; r <= grid.GetLength(1) - 1; r++)
+
+        for (int r = 0; r < grid.GetLength(0); r++)
         {
-            for (int c = 0; c <= grid.GetLength(0) - 1; c++)
+            for (int c = 0; c < grid.GetLength(1); c++)
             {
-
-                if (blockGrid[c, r] == 1)
-                {
-                    Console.Write("X");
-                }
-
                 if (c == x && r == y || blockX > 0)
                 {
-                    //Console.Write("🐱");
-                    //Console.Write("X");
-                    blockGrid[c, r] = block[blockX, blockY];
+                    blockGrid[c, r] = block[blockY, blockX];
+                    var what_is_this_value = block[blockX, blockY];
+                    var what_is_that_value = blockGrid[c, r];
                     blockX++;
                     if (blockX >= block.GetLength(0))
                     {
                         blockX = 0;
                     }
-
-                    
-
-                    continue;
                 }
-                Matrix.ClearBoard(grid);
-
-
-
-                if (grid[c, r] == 1)
-                {
-                    //Console.Write("🐱");
-                    Console.Write("X");
-                    continue;
-                } 
-                //Console.Write("🌀");
-                Console.Write(" ");
             }
             blockY++;
             if (blockY >= block.GetLength(1))
             {
                 blockY = 0;
             }
+        }
 
+        for (int r = 0; r <= grid.GetLength(1) - 1; r++)
+        {
+            for (int c = 0; c <= grid.GetLength(0) - 1; c++)
+            {
+                if (blockGrid[c, r] == 1)
+                {
+                    //Console.Write("X");
+                    Console.Write("🐱");
+                    continue;
+                }
 
+        
+                Matrix.ClearBoard(grid);
+
+                if (grid[c, r] == 1)
+                {
+                    Console.Write("🐱");
+                    //Console.Write("X");
+                    continue;
+                } 
+                Console.Write("🌀");
+                //Console.Write(" ");
+            }
             Console.WriteLine();
         }
+
         y++;
         if (y >= grid.GetLength(1) - 3 || grid[x , y + 1] == 1)
         {
