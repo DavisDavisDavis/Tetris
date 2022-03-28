@@ -13,6 +13,10 @@ class Game
     public bool Paused { get; private set; }
     public bool GameOver { get; private set; }
 
+    public bool Windows { get;  set; }
+    public string icon { get;  set; }
+    public string emptySpace { get; set; }
+
     public int x = 0;
     public int y = 0;  
     public int[,] grid = new int[10, 10];
@@ -21,6 +25,7 @@ class Game
     public void Start()
     {
         Console.WriteLine("Start");
+        Windows = true;
         ScheduleNextTick();
     }
 
@@ -73,6 +78,18 @@ class Game
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
 
+        if (Windows)
+        {
+            icon = "X";
+            emptySpace = " ";
+
+        }
+        else
+        {
+            icon = "🐱";
+            emptySpace = "🌀";
+        }
+
         for (int r = 0; r < grid.GetLength(0); r++)
         {
             for (int c = 0; c < grid.GetLength(1); c++)
@@ -103,7 +120,7 @@ class Game
                 if (blockGrid[c, r] == 1)
                 {
                     //Console.Write("X");
-                    Console.Write("🐱");
+                    Console.Write(icon);
                     continue;
                 }
 
@@ -112,11 +129,11 @@ class Game
 
                 if (grid[c, r] == 1)
                 {
-                    Console.Write("🐱");
+                    Console.Write(icon);
                     //Console.Write("X");
                     continue;
                 } 
-                Console.Write("🌀");
+                Console.Write(emptySpace);
                 //Console.Write(" ");
             }
             Console.WriteLine();
