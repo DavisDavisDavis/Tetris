@@ -25,7 +25,7 @@ class Game
     public void Start()
     {
         Console.WriteLine("Start");
-        Windows = true;
+        Windows = false;
 
         if (Windows)
         {
@@ -35,7 +35,7 @@ class Game
         }
         else
         {
-            icon = "🐱";
+            icon = "💖";
             emptySpace = "🌀";
         }
         ScheduleNextTick();
@@ -67,7 +67,7 @@ class Game
         {
             x--;
         }
-        if (ConsoleKey.RightArrow == key && x < grid.GetLength(0) - 1)
+        if (ConsoleKey.RightArrow == key && x < grid.GetLength(0) - 4)
         {
             x++;
         }
@@ -77,9 +77,9 @@ class Game
     {
         var block = new int[,]
         {
-            { 1, 0, 0 },
+            { 1, 1, 1 },
             { 0, 1, 0 },
-            { 0, 0, 1 },
+            { 0, 1, 0 },
         };
 
         var blockX = 0;
@@ -120,7 +120,6 @@ class Game
             {
                 if (blockGrid[c, r] == 1)
                 {
-                    //Console.Write("X");
                     Console.Write(icon);
                     continue;
                 }
@@ -131,11 +130,9 @@ class Game
                 if (grid[c, r] == 1)
                 {
                     Console.Write(icon);
-                    //Console.Write("X");
                     continue;
                 } 
                 Console.Write(emptySpace);
-                //Console.Write(" ");
             }
             Console.WriteLine();
         }

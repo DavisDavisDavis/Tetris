@@ -10,7 +10,7 @@ namespace Tetris
 
         public static bool IsRowClear(int[,] grid, int r)
         {
-            for (int c = 0; c < grid.GetLength(0); c++)
+            for (int c = 0; c < grid.GetLength(0) - 5; c++)
             {
                 if (grid[c, r] == 0)
                 {
@@ -22,7 +22,7 @@ namespace Tetris
 
         public static int ClearRow(int[,] grid, int r)
         {
-            for (int c = 0; c < grid.GetLength(0); c++)
+            for (int c = 0; c < grid.GetLength(0) - 5; c++)
             {
                 grid[c, r] = 0;
             }
