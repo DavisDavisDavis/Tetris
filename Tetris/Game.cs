@@ -60,9 +60,9 @@ class Game
     {
         var block = new int[,]
         {
-            { 1, 1, 1 },
+            { 1, 0, 0 },
             { 0, 1, 0 },
-            { 1, 1, 1 },
+            { 0, 0, 1 },
         };
 
         var blockX = 0;
@@ -77,7 +77,7 @@ class Game
         {
             for (int c = 0; c < grid.GetLength(1); c++)
             {
-                if (c == x && r == y || blockY > 0)
+                if (c == x && r == y + blockY || blockX > 0)
                 {
                     blockGrid[c, r] = block[blockY, blockX];
                     var what_is_this_value = block[blockX, blockY];
