@@ -26,6 +26,18 @@ class Game
     {
         Console.WriteLine("Start");
         Windows = true;
+
+        if (Windows)
+        {
+            icon = "X";
+            emptySpace = " ";
+
+        }
+        else
+        {
+            icon = "🐱";
+            emptySpace = "🌀";
+        }
         ScheduleNextTick();
     }
 
@@ -78,22 +90,11 @@ class Game
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
 
-        if (Windows)
-        {
-            icon = "X";
-            emptySpace = " ";
-
-        }
-        else
-        {
-            icon = "🐱";
-            emptySpace = "🌀";
-        }
-
         for (int r = 0; r < grid.GetLength(0); r++)
         {
             for (int c = 0; c < grid.GetLength(1); c++)
             {
+
                 if (c == x && r == y + blockY || blockX > 0)
                 {
                     blockGrid[c, r] = block[blockY, blockX];
@@ -103,10 +104,10 @@ class Game
                     if (blockX >= block.GetLength(0))
                     {
                         blockX = 0;
+                        blockY++;
                     }
                 }
             }
-            blockY++;
             if (blockY >= block.GetLength(1))
             {
                 blockY = 0;
