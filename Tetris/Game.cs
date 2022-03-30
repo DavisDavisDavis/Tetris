@@ -77,9 +77,9 @@ class Game
     {
         var block = new int[,]
         {
-            { 1, 1, 1 },
             { 0, 0, 0 },
-            { 1, 1, 1 },
+            { 0, 0, 0 },
+            { 1, 1, 0 },
         };
 
         var blockX = 0;
@@ -138,8 +138,9 @@ class Game
         }
 
         y++;
-        if (y >= grid.GetLength(1) - 7 - block.GetLength(1) || grid[x, y + 1] == 1)
+        if (y >= grid.GetLength(1) - 7 - block.GetLength(1) || grid[x, y + block.GetLength(1)] == 1)
         {
+            //Copy the block grid onto grid
             for (int r = 0; r <= grid.GetLength(1) - 1; r++)
             {
                 for (int c = 0; c <= grid.GetLength(0) - 1; c++)
@@ -151,10 +152,8 @@ class Game
 
                     }
                 }
-
             }
             y = 0;
-
         }
 
         ScheduleNextTick();

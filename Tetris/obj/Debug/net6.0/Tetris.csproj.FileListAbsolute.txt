@@ -41,3 +41,4 @@ D:\Code\WU21\C#\Tetris\Tetris\obj\Debug\net6.0\Tetris.dll
 D:\Code\WU21\C#\Tetris\Tetris\obj\Debug\net6.0\ref\Tetris.dll
 D:\Code\WU21\C#\Tetris\Tetris\obj\Debug\net6.0\Tetris.pdb
 D:\Code\WU21\C#\Tetris\Tetris\obj\Debug\net6.0\Tetris.genruntimeconfig.cache
+D:\Code\WU21\C#\Tetris\Tetris\obj\Debug\net6.0\Tetris.csproj.AssemblyReference.cache
