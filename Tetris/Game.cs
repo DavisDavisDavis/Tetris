@@ -19,13 +19,13 @@ class Game
 
     public int x = 0;
     public int y = 0;  
-    public int[,] grid = new int[10, 10];
+    public int[,] grid = new int[10, 18];
 
 
     public void Start()
     {
         Console.WriteLine("Start");
-        Windows = false;
+        Windows = true;
 
         if (Windows)
         {
@@ -78,14 +78,14 @@ class Game
         var block = new int[,]
         {
             { 1, 1, 1 },
-            { 0, 1, 0 },
-            { 0, 1, 0 },
+            { 0, 0, 0 },
+            { 1, 1, 1 },
         };
 
         var blockX = 0;
         var blockY = 0;
 
-        int[,] blockGrid = new int[10, 10];
+        int[,] blockGrid = new int[grid.GetLength(0), grid.GetLength(1)];
 
         Console.Clear();
         Console.WriteLine($"X: {x} Y: {y}");
@@ -138,10 +138,23 @@ class Game
         }
 
         y++;
-        if (y >= grid.GetLength(1) - 3 || grid[x , y + 1] == 1)
+        if (y >= grid.GetLength(1) - 7 - block.GetLength(1) || grid[x, y + 1] == 1)
         {
-            grid[x, y] = 1;
+            for (int r = 0; r <= grid.GetLength(1) - 1; r++)
+            {
+                for (int c = 0; c <= grid.GetLength(0) - 1; c++)
+                {
+
+                    if (blockGrid[c, r] == 1)
+                    {
+                        grid[c, r] = blockGrid[c, r];
+
+                    }
+                }
+
+            }
             y = 0;
+
         }
 
         ScheduleNextTick();
