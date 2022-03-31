@@ -1,18 +1,18 @@
 ﻿<Properties StartupConfiguration="{FEC19BBF-A0E0-40B3-B8DE-CF01CCF091EB}|Default">
   <MonoDevelop.Ide.ItemProperties.Tetris PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Tetris/Matrix.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Tetris/Game.cs">
     <Files>
-      <File FileName="Tetris/Game.cs" Line="86" Column="21" />
-      <File FileName="Tetris/Matrix.cs" Line="14" Column="18" />
+      <File FileName="Tetris/Game.cs" Line="80" Column="16" />
+      <File FileName="Tetris/Matrix.cs" Line="25" Column="54" />
       <File FileName="Tetris/DemoGame.csproj" Line="1" Column="1" />
+      <File FileName="Tetris/Program.cs" Line="8" Column="1" />
+      <File FileName="Tetris/ScheduleTimer.cs" Line="29" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Tetris" expanded="True">
-            <Node name="Tetris" expanded="True">
-              <Node name="Matrix.cs" selected="True" />
-            </Node>
+            <Node name="Tetris" expanded="True" />
           </Node>
         </State>
       </Pad>

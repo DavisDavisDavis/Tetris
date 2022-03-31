@@ -20,6 +20,8 @@ class Game
     public int x = 0;
     public int y = 0;  
     public int[,] grid = new int[10, 18];
+    public int[,] block = new int[3, 3];
+    public int[,] copy = new int[3, 3];
 
 
     public void Start()
@@ -38,6 +40,13 @@ class Game
             icon = "💖";
             emptySpace = "🌀";
         }
+
+        block = new int[,]
+{
+            { 0, 0, 0 },
+            { 1, 1, 1 },
+            { 0, 1, 0 },
+        };
         ScheduleNextTick();
     }
 
@@ -71,17 +80,23 @@ class Game
         {
             x++;
         }
+        if (ConsoleKey.Spacebar == key)
+        {
+            //int[,] copy = new int[block.GetLength(0), block.GetLength(1)];
+            
+            for (var i = 0; i < block.GetLength(1); i++)
+            {
+                for (var j = 0; j < block.GetLength(0); j++)
+                {
+                    Console.WriteLine(copy);
+                    copy[block.GetLength(0) - j - 1, i] = block[i, j];
+                }
+            }
+        }
     }
 
     void Tick()
     {
-        var block = new int[,]
-        {
-            { 1, 0, 0 },
-            { 1, 0, 0 },
-            { 1, 1, 1 },
-        };
-
         var blockX = 0;
         var blockY = 0;
 
@@ -97,7 +112,7 @@ class Game
 
                 if (c == x && r == y + blockY || blockX > 0)
                 {
-                    blockGrid[c, r] = block[blockY, blockX];
+                    blockGrid[c, r] = copy[blockY, blockX];
                     var what_is_this_value = block[blockX, blockY];
                     var what_is_that_value = blockGrid[c, r];
                     blockX++;
@@ -138,7 +153,7 @@ class Game
         }
 
         y++;
-        if (y >= grid.GetLength(1) - 7 - block.GetLength(1) || grid[x, y + block.GetLength(1)] == 1)
+        if (y >= grid.GetLength(1) - 7 - block.GetLength(1) || grid[x, y + block.GetLength(1) - 1] == 1)
         {
             //Copy the block grid onto grid
             for (int r = 0; r <= grid.GetLength(1) - 1; r++)
