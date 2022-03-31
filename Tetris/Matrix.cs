@@ -8,6 +8,22 @@ namespace Tetris
         private static int downCount { get; set; }
         private static bool fullRow { get; set; }
 
+        public static int[,] RotateLeft(int[,] block)
+        {
+            var size = block.GetLength(0);
+            var copy = new int[size, size];
+
+            for (var i = 0; i < size; i++)
+            {
+                for (var j = 0; j < size; j++)
+                {
+                    copy[size - j - 1, i] = block[i, j];
+                }
+            }
+
+            return copy;
+        }
+
         public static bool IsRowClear(int[,] grid, int r)
         {
             for (int c = 0; c < grid.GetLength(0) - 5; c++)

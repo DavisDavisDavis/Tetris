@@ -82,16 +82,7 @@ class Game
         }
         if (ConsoleKey.Spacebar == key)
         {
-            //int[,] copy = new int[block.GetLength(0), block.GetLength(1)];
-            
-            for (var i = 0; i < block.GetLength(1); i++)
-            {
-                for (var j = 0; j < block.GetLength(0); j++)
-                {
-                    Console.WriteLine(copy);
-                    copy[block.GetLength(0) - j - 1, i] = block[i, j];
-                }
-            }
+            block = Matrix.RotateLeft(block);
         }
     }
 
@@ -112,7 +103,7 @@ class Game
 
                 if (c == x && r == y + blockY || blockX > 0)
                 {
-                    blockGrid[c, r] = copy[blockY, blockX];
+                    blockGrid[c, r] = block[blockY, blockX];
                     var what_is_this_value = block[blockX, blockY];
                     var what_is_that_value = blockGrid[c, r];
                     blockX++;
