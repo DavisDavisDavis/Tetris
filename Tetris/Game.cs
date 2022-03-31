@@ -25,7 +25,7 @@ class Game
     public void Start()
     {
         Console.WriteLine("Start");
-        Windows = true;
+        Windows = false;
 
         if (Windows)
         {
@@ -77,9 +77,9 @@ class Game
     {
         var block = new int[,]
         {
-            { 0, 0, 0 },
-            { 0, 0, 0 },
-            { 1, 1, 0 },
+            { 1, 0, 0 },
+            { 1, 0, 0 },
+            { 1, 1, 1 },
         };
 
         var blockX = 0;
