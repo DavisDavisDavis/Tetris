@@ -27,7 +27,7 @@ class Game
     public void Start()
     {
         Console.WriteLine("Start");
-        Windows = false;
+        Windows = true;
 
         if (Windows)
         {
@@ -104,8 +104,6 @@ class Game
                 if (c == x && r == y + blockY || blockX > 0)
                 {
                     blockGrid[c, r] = block[blockY, blockX];
-                    var what_is_this_value = block[blockX, blockY];
-                    var what_is_that_value = blockGrid[c, r];
                     blockX++;
                     if (blockX >= block.GetLength(0))
                     {
@@ -124,27 +122,49 @@ class Game
         {
             for (int c = 0; c <= grid.GetLength(0) - 1; c++)
             {
+
+
+
+ 
+
+                Matrix.ClearBoard(grid);
+
+                if (grid[c, r] == 1)
+                {
+                    if (blockGrid[c, r] == 1)
+                    {
+                        for (int a = 0; a <= grid.GetLength(1) - 1; a++)
+                        {
+                            for (int b = 0; b <= grid.GetLength(0) - 1; b++)
+                            {
+
+                                if (blockGrid[b, a] == 1)
+                                {
+                                    grid[b, a] = blockGrid[b, a];
+
+                                }
+                            }
+                        }
+                        y = 0;
+                        break;
+                    }
+                    Console.Write(icon);
+                    continue;
+                }
+
                 if (blockGrid[c, r] == 1)
                 {
                     Console.Write(icon);
                     continue;
                 }
 
-        
-                Matrix.ClearBoard(grid);
-
-                if (grid[c, r] == 1)
-                {
-                    Console.Write(icon);
-                    continue;
-                } 
                 Console.Write(emptySpace);
             }
             Console.WriteLine();
         }
 
         y++;
-        if (y >= grid.GetLength(1) - 7 - block.GetLength(1) || grid[x, y + block.GetLength(1) - 1] == 1)
+        if (y >= grid.GetLength(1) - 7 - block.GetLength(1))
         {
             //Copy the block grid onto grid
             for (int r = 0; r <= grid.GetLength(1) - 1; r++)
