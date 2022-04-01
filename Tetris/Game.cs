@@ -122,12 +122,7 @@ class Game
         {
             for (int c = 0; c <= grid.GetLength(0) - 1; c++)
             {
-
-
-
- 
-
-                Matrix.ClearBoard(grid);
+                
 
                 if (grid[c, r] == 1)
                 {
@@ -140,17 +135,19 @@ class Game
 
                                 if (blockGrid[b, a] == 1)
                                 {
-                                    grid[b, a] = blockGrid[b, a];
+                                    grid[b, a - 1] = blockGrid[b, a];
 
                                 }
                             }
                         }
                         y = 0;
-                        break;
+                        continue;
                     }
                     Console.Write(icon);
                     continue;
                 }
+
+                Matrix.ClearBoard(grid);
 
                 if (blockGrid[c, r] == 1)
                 {
