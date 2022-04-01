@@ -20,6 +20,7 @@ class Game
     public int x = 0;
     public int y = 0;  
     public int[,] grid = new int[10, 18];
+    public int[,] blockGrid = new int[10, 18];
     public int[,] block = new int[3, 3];
     public int[,] copy = new int[3, 3];
 
@@ -29,6 +30,7 @@ class Game
         Console.WriteLine("Start");
         Windows = true;
 
+        //for some reason emojis dont work on the windows console
         if (Windows)
         {
             icon = "X";
@@ -45,7 +47,7 @@ class Game
 {
             { 0, 0, 0 },
             { 1, 1, 1 },
-            { 0, 1, 0 },
+            { 0, 1, 1 },
         };
         ScheduleNextTick();
     }
@@ -68,22 +70,6 @@ class Game
     {
         Console.WriteLine("Stop");
         GameOver = true;
-    }
-
-    public void Input(ConsoleKey key)
-    {
-        if (ConsoleKey.LeftArrow == key && x > 0 )
-        {
-            x--;
-        }
-        if (ConsoleKey.RightArrow == key && x < grid.GetLength(0) - 4)
-        {
-            x++;
-        }
-        if (ConsoleKey.Spacebar == key)
-        {
-            block = Matrix.RotateLeft(block);
-        }
     }
 
     void Tick()
@@ -180,6 +166,26 @@ class Game
         }
 
         ScheduleNextTick();
+    }
+
+    public void Input(ConsoleKey key)
+    {
+        if (ConsoleKey.LeftArrow == key && x > 0)
+        {
+            x--;
+        }
+        if (ConsoleKey.RightArrow == key && x < grid.GetLength(0) - 3)
+        {
+            if (Matrix.Collision(grid, blockGrid))
+            {
+                Console.WriteLine();
+            }
+            x++;
+        }
+        if (ConsoleKey.Spacebar == key)
+        {
+            block = Matrix.RotateLeft(block);
+        }
     }
 
     void ScheduleNextTick()

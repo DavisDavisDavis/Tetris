@@ -26,7 +26,7 @@ namespace Tetris
 
         public static bool IsRowClear(int[,] grid, int r)
         {
-            for (int c = 0; c < grid.GetLength(0) - 5; c++)
+            for (int c = 0; c < grid.GetLength(0) - 1; c++)
             {
                 if (grid[c, r] == 0)
                 {
@@ -73,6 +73,24 @@ namespace Tetris
                     MoveRow(grid, r);
                 }
             }
+        }
+
+        public static bool Collision(int[,] grid, int[,] blockGrid)
+        {
+            for (int r = 0; r <= grid.GetLength(1) - 1; r++)
+            {
+                for (int c = 0; c <= grid.GetLength(0) - 1; c++)
+                {
+
+                    if (blockGrid[c, r] == 1 && grid[c, r] == 1)
+                    {
+                        return true;
+
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
