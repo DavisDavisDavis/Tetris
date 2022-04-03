@@ -23,14 +23,41 @@ class Game
     public int[,] blockGrid = new int[10, 18];
     public int[,] block = new int[3, 3];
     public int[,] copy = new int[3, 3];
+    public List<Block> _blocks = new List<Block>()
+         {
+            new Block("T-block", new int[,]
+            {
+                { 0, 0, 0 },
+                { 1, 1, 1 },
+                { 0, 1, 1 },
+            }),
+            new Block("I-block", new int[,]
+            {
+                { 0, 1, 0 },
+                { 0, 1, 0 },
+                { 0, 1, 0 },
+            }),
+            new Block("L-block", new int[,]
+            {
+                { 1, 0, 0 },
+                { 1, 0, 0 },
+                { 1, 1, 0 },
+            }),
+            new Block("square-block", new int[,]
+            {
+                { 0, 0, 0 },
+                { 1, 1, 0 },
+                { 1, 1, 0 },
+            })
+        };
 
+    
 
     public void Start()
     {
         Console.WriteLine("Start");
         Windows = true;
-
-        //for some reason emojis dont work on the windows console
+        //For some reason emojis dont work on the windows console
         if (Windows)
         {
             icon = "X";
@@ -43,12 +70,6 @@ class Game
             emptySpace = "🌀";
         }
 
-        block = new int[,]
-{
-            { 0, 0, 0 },
-            { 1, 1, 1 },
-            { 0, 1, 1 },
-        };
         ScheduleNextTick();
     }
 
@@ -76,6 +97,9 @@ class Game
     {
         var blockX = 0;
         var blockY = 0;
+
+        var block = _blocks[0];
+
 
         int[,] blockGrid = new int[grid.GetLength(0), grid.GetLength(1)];
 
@@ -178,6 +202,7 @@ class Game
         {
             if (Matrix.Collision(grid, blockGrid))
             {
+                Console.WriteLine(grid);
                 Console.WriteLine();
             }
             x++;
