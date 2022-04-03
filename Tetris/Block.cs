@@ -8,8 +8,8 @@ namespace Tetris
 {
     internal class Block
     {
-        private string Name { get; }
-        private int[,] Map { get; }
+        public string Name { get; set; }
+        public int[,] Map { get; set; }
 
         public Block(string name, int[,] map)
         {

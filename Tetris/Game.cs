@@ -43,7 +43,7 @@ class Game
                 { 1, 0, 0 },
                 { 1, 1, 0 },
             }),
-            new Block("square-block", new int[,]
+            new Block("Square-block", new int[,]
             {
                 { 0, 0, 0 },
                 { 1, 1, 0 },
@@ -55,6 +55,8 @@ class Game
 
     public void Start()
     {
+        
+
         Console.WriteLine("Start");
         Windows = true;
         //For some reason emojis dont work on the windows console
@@ -69,6 +71,9 @@ class Game
             icon = "💖";
             emptySpace = "🌀";
         }
+
+
+        int[,] block = _blocks[0].Map;
 
         ScheduleNextTick();
     }
@@ -97,8 +102,6 @@ class Game
     {
         var blockX = 0;
         var blockY = 0;
-
-        var block = _blocks[0];
 
 
         int[,] blockGrid = new int[grid.GetLength(0), grid.GetLength(1)];
@@ -132,8 +135,6 @@ class Game
         {
             for (int c = 0; c <= grid.GetLength(0) - 1; c++)
             {
-                
-
                 if (grid[c, r] == 1)
                 {
                     if (blockGrid[c, r] == 1)
