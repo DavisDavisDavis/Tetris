@@ -34,21 +34,21 @@ class Game
             }),
             new Block("I-block", "🐸", new int[,]
             {
-                { 0, 1, 0 },
-                { 0, 1, 0 },
-                { 0, 1, 0 },
+                { 0, 2, 0 },
+                { 0, 2, 0 },
+                { 0, 2, 0 },
             }),
             new Block("L-block", "🐱", new int[,]
             {
-                { 1, 0, 0 },
-                { 1, 0, 0 },
-                { 1, 1, 0 },
+                { 3, 0, 0 },
+                { 3, 0, 0 },
+                { 3, 3, 0 },
             }),
             new Block("Square-block", "🐷", new int[,]
             {
                 { 0, 0, 0 },
-                { 1, 1, 0 },
-                { 1, 1, 0 },
+                { 4, 4, 0 },
+                { 4, 4, 0 },
             })
         };
 
@@ -143,9 +143,9 @@ class Game
         {
             for (int c = 0; c <= grid.GetLength(0) - 1; c++)
             {
-                if (grid[c, r] == 1)
+                if (grid[c, r] != 0)
                 {
-                    if (blockGrid[c, r] == 1)
+                    if (blockGrid[c, r] != 0)
                     {
                         for (int a = 0; a <= grid.GetLength(1) - 1; a++)
                         {
@@ -162,15 +162,16 @@ class Game
                         y = 0;
                         continue;
                     }
-                    Console.Write(icon);
+
+                    Console.Write(_blocks[(blockGrid[c, r] - 1)].Icon);
                     continue;
                 }
 
                 Matrix.ClearBoard(grid);
 
-                if (blockGrid[c, r] == 1)
+                if (blockGrid[c, r] != 0)
                 {
-                    Console.Write(icon);
+                    Console.Write(_blocks[(blockGrid[c, r] - 1)].Icon);
                     continue;
                 }
 
