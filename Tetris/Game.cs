@@ -152,7 +152,7 @@ class Game
                             for (int b = 0; b <= grid.GetLength(0) - 1; b++)
                             {
 
-                                if (blockGrid[b, a] == 1)
+                                if (blockGrid[b, a] != 0)
                                 {
                                     grid[b, a - 1] = blockGrid[b, a];
 
@@ -161,9 +161,11 @@ class Game
                         }
                         y = 0;
                         continue;
-                    }
 
-                    Console.Write(_blocks[(blockGrid[c, r] - 1)].Icon);
+
+                    }
+                    var uwu = grid[c, r] - 1;
+                    Console.Write(_blocks[(grid[c, r] - 1)].Icon);
                     continue;
                 }
 
@@ -189,7 +191,7 @@ class Game
                 for (int c = 0; c <= grid.GetLength(0) - 1; c++)
                 {
 
-                    if (blockGrid[c, r] == 1)
+                    if (blockGrid[c, r] != 0)
                     {
                         grid[c, r] = blockGrid[c, r];
 
