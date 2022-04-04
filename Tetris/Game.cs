@@ -26,25 +26,25 @@ class Game
     public int[,] copy = new int[3, 3];
     public List<Block> _blocks = new List<Block>()
          {
-            new Block("T-block", new int[,]
+            new Block("T-block", "🐶", new int[,]
             {
                 { 0, 0, 0 },
                 { 1, 1, 1 },
                 { 0, 1, 0 },
             }),
-            new Block("I-block", new int[,]
+            new Block("I-block", "🐸", new int[,]
             {
                 { 0, 1, 0 },
                 { 0, 1, 0 },
                 { 0, 1, 0 },
             }),
-            new Block("L-block", new int[,]
+            new Block("L-block", "🐱", new int[,]
             {
                 { 1, 0, 0 },
                 { 1, 0, 0 },
                 { 1, 1, 0 },
             }),
-            new Block("Square-block", new int[,]
+            new Block("Square-block", "🐷", new int[,]
             {
                 { 0, 0, 0 },
                 { 1, 1, 0 },
@@ -59,7 +59,7 @@ class Game
         
 
         Console.WriteLine("Start");
-        Windows = true;
+        Windows = false;
         //For some reason emojis dont work on the windows console
         if (Windows)
         {
@@ -110,6 +110,7 @@ class Game
             random = rnd.Next(0, _blocks.Count);
         }
         int[,] block = _blocks[random].Map;
+        icon = _blocks[random].Icon;
 
         int[,] blockGrid = new int[grid.GetLength(0), grid.GetLength(1)];
 
