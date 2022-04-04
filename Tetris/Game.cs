@@ -19,6 +19,7 @@ class Game
 
     public int x = 0;
     public int y = 0;  
+    public int random = 0;  
     public int[,] grid = new int[10, 18];
     public int[,] blockGrid = new int[10, 18];
     public int[,] block = new int[3, 3];
@@ -29,7 +30,7 @@ class Game
             {
                 { 0, 0, 0 },
                 { 1, 1, 1 },
-                { 0, 1, 1 },
+                { 0, 1, 0 },
             }),
             new Block("I-block", new int[,]
             {
@@ -73,7 +74,7 @@ class Game
         }
 
 
-        int[,] block = _blocks[0].Map;
+        
 
         ScheduleNextTick();
     }
@@ -103,6 +104,12 @@ class Game
         var blockX = 0;
         var blockY = 0;
 
+        var rnd = new Random();
+        if (y == 0)
+        {
+            random = rnd.Next(0, _blocks.Count);
+        }
+        int[,] block = _blocks[random].Map;
 
         int[,] blockGrid = new int[grid.GetLength(0), grid.GetLength(1)];
 
